@@ -6,7 +6,7 @@ public class Gun : MonoBehaviour
 {
     public Transform muzzle;           // The position where bullets are spawned
     public GameObject bulletPrefab;    // Prefab of the bullet GameObject
-    public float bulletForce = 20f;    // Force applied to the bullet when fired
+    public float bulletForce = 50f;    // Force applied to the bullet when fired
     public float fireRate = 0.2f;      // Time delay between consecutive shots
 
     // Private variable to control firing rate
@@ -34,6 +34,14 @@ public class Gun : MonoBehaviour
         // Instantiate a bullet at the muzzle position with the muzzle rotation
         GameObject bullet = Instantiate(bulletPrefab, muzzle.position, muzzle.rotation);
         
+        // Change the color of the new bullet
+        bullet.tag = PlayerInteract.tagname;
+        Renderer bulletRenderer = bullet.GetComponent<Renderer>();
+        if (bulletRenderer != null)
+        {
+            bulletRenderer.material.color = PlayerInteract.bulletColor;
+        }
+
         // Get the bullet's Rigidbody component
         Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
         

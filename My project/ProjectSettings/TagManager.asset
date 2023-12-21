@@ -3,7 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - terrain
+  - mapOBJ
+  - Gun
+  - BulletType2
+  - BulletType3
+  - EnemyType1
+  - EnemyType2
+  - EnemyType3
+  - BulletType1
+  - Keypad
   layers:
   - Default
   - TransparentFX
@@ -11,7 +21,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - objInteractable
   - 
   - 
   - 

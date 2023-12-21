@@ -4,31 +4,21 @@ using UnityEngine;
 
 public class PlayerMovements : MonoBehaviour
 {
-    public float movementSpeed = 5f;
-    public float rotationSpeed = 180f;
+    // Public variable accessible in the Unity Editor
+    public float movementSpeed = 5f;  // Speed of player movement
 
+    // Update is called once per frame
     void Update()
     {
-        // Get input for movement and rotation
-        float movementInput = Input.GetAxis("Vertical");
-        float rotationInput = Input.GetAxis("Horizontal");
+        // Get input for movement
+        float verticalInput = Input.GetAxis("Vertical");
+        float horizontalInput = Input.GetAxis("Horizontal");
 
-        // Calculate movement direction
-        Vector3 movementDirection = Vector3.forward * movementInput;
+        // Calculate movement amount based on input
+        Vector3 movementAmount = new Vector3(horizontalInput, 0f, verticalInput) * movementSpeed;
 
-        // Normalize movement direction
-        movementDirection.Normalize();
-
-        // Calculate movement amount
-        Vector3 movementAmount = movementDirection * movementSpeed;
-
-        // Translate the player's position
-        transform.Translate(movementAmount * Time.deltaTime);
-
-        // Calculate rotation amount
-        float rotationAmount = rotationInput * rotationSpeed;
-
-        // Rotate the player's transform
-        transform.Rotate(Vector3.up, rotationAmount * Time.deltaTime);
+        // Translate the player's position based on the calculated movement amount
+        // Space.Self indicates movement relative to the player's local coordinate system
+        transform.Translate(movementAmount * Time.deltaTime, Space.Self);
     }
 }
